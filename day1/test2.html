@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>환영합니다.</title>
+    <!-- favicon -->
+    <link rel="icon" type="image/x-icon" href="/day1/images/favicon.ico">
+    <!--external방식-->
+    <link rel="stylesheet" href="test2.css">
+    <!--인터널방식(internal)-->
+    <style>
+        p {
+            background-color: yellow;
+        }
+        p b {
+            background-color: lightblue;
+        }
+        /* body {
+            background-image: url('/day1/images/sample.jpg');
+        } */
+        html,body{
+            width:100%;
+        }
+        table {
+            width:100%;
+        }
+        table tr:nth-of-type(2) th:nth-of-type(1) {
+            width:30%;
+        }
+        table tr:nth-of-type(2){
+            background-color: yellow;
+            height:50px;
+        }        
+        th, td {
+            border: 1px dashed blue;
+            border-collapse: collapse;
+        }
+        th, td {
+            background-color: #96D4D4;
+            border-radius: 50%;
+        }
+        .g1 {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <p>반갑습니다.<b>홍길동님</b></p>
+    <!--인라인방식(inline)-->
+    <p style="background-color: pink;">오늘은 목요일입니다.</p>
+    <p class="c1">내일은 금요일입니다.</p>
+    <a href="http://www.naver.com" >naver</a>
+    <a href="/html/hello.html">hello</a>
+
+    <!--상대경로 : 현재 위치를 기준으로 경로를 찾음-->
+    <!-- .(점1) : 현재위치,    ..(점2) : 상위폴더 -->
+    <img src="images/sample2.jpg" alt="이미지가 없음" width="30" height="30">
+    <img src="./images/sample.jpg" alt="" width="30" height="30">
+    <img src="../day1/images/sample.jpg" alt="" width="30" height="30">
+
+    <!--절대경로 : 현재 위치를 기준으로 경로를 찾음-->
+    <img src="/day1/images/sample.jpg" alt="" width="30" height="30">
+
+    <table>
+        <tr>
+            <th>이름</th>
+            <th colspan="2">몸무게/키</th>
+        </tr>
+        <tr>
+            <td>홍길동</td>
+            <td>70</td>
+            <td>180</td>
+        </tr>
+        <tr>
+            <td>홍길순</td>
+            <td rowspan="2">50</td>
+            
+        </tr>
+    </table>
+    <iframe src="test1.html" frameborder="0" height="300" scrolling="no" style="overflow: hidden;"></iframe>
+    <div>
+        <h2>간식</h3>
+        <ul>
+            <h3>점시간식</h3>
+            <li>item1</li>
+            <li>item2</li>
+            <li>item3</li>
+            <h4>야참</h4>
+            <ol>
+                <li>item1</li>
+                <li>item2</li>
+            </ol>
+        </ul>
+    </div>       
+    
+    <p class="g1">p1</p>
+    <p class="g1">p2</p>
+    <ul class="g1">
+        <li>item1</li>
+        <li>item2</li>
+    </ul>
+</body>
+</html>

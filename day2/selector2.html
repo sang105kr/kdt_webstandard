@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 모든 자식 엘리먼트를 대상으로 순서를 따짐 */
+        ul > :nth-child(3){
+            background-color: yellow;
+        }
+        ul > :first-child {
+            background-color: lightskyblue;
+        }
+        ul > :last-child {
+            background-color: lightcoral;
+        }
+
+        /* 특정 타입의 엘리먼트를 대상으로 순서를 따짐 */
+        ul > li:nth-of-type(3){
+            background-color: pink;
+        }
+        ul > p:first-of-type {
+            background-color: lightgray;
+        }
+        ul > p:last-of-type {
+            background-color: lightgoldenrodyellow;
+        }        
+    </style>
+</head>
+<body>
+  <ul>
+    <li>item1</li>
+    <li>item2</li>
+    <p>Lorem, ipsum dolor.</p>
+    <p>Lorem, ipsum dolor.</p>
+    <p>Lorem, ipsum dolor.</p>
+    <li>item3</li>
+    <li>item4</li>
+  </ul>  
+</body>
+</html>
