@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {outline:1px solid red;}
+    .container {
+      display: grid;
+      grid-template-columns: 100px 1fr 100px;
+      grid-template-rows: 100px 50px auto 20px 70px;
+      grid-template-areas: 
+        "header   header    header"
+        "gnb      gnb       gnb   "
+        "side-a   main      side-b"
+        " .         .         .   "
+        "footer   footer    footer"
+      ;
+    }
+    header{
+      grid-area: header;
+    }
+    nav{
+      grid-area: gnb;
+    }
+    aside.left {
+      grid-area:side-a;
+    }  
+    main {
+      grid-area: main;
+    }
+    aside.right {
+      grid-area:side-b;
+    }  
+    footer {
+      grid-area: footer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>header</header>
+    <nav>gnb_menu</nav>
+    <aside class="left">aside</aside>
+    <main>main
+      <section class="s1">
+        <h2>섹션1</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam voluptatem fugiat quaerat laudantium sunt laborum amet optio quos, illum laboriosam perspiciatis corrupti velit ad facilis minus unde mollitia nemo. Dolores.
+        Impedit enim doloribus nam qui temporibus nemo nesciunt laboriosam consequatur ea repudiandae dolor quaerat velit vero voluptatibus recusandae excepturi possimus facilis officiis unde, perspiciatis voluptatem, laudantium quo accusantium et? Eos.
+        Ut dolore error enim officia dolor quaerat, distinctio dicta consectetur nemo, quidem sit. Cupiditate laudantium porro praesentium excepturi, officia debitis consequatur dolores non laboriosam quo nihil nam? Adipisci, eos assumenda?</p>
+      </section>
+      <section class="s2">
+        <h2>섹션2</h2>
+        <ul>
+          <li>항목1</li>
+          <li>항목2</li>
+          <li>항목3</li>
+        </ul>
+      </section>
+      <section class="s3">
+        <h2>섹션3</h2>
+        <form action="">
+          <label for="">이메일링</label>
+          <input type="text" name="" id="">
+        </form>
+      </section>
+    </main>
+    <aside class="right"></aside>
+    <footer><p>KH인재교육원</p></footer>    
+  </div>
+</body>
+</html>
