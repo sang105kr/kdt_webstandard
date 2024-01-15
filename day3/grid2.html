@@ -6,10 +6,16 @@
   <title>Document</title>
   <style>
     * {outline:1px solid red;}
+
+    a {
+      text-decoration: none;
+      color : black;
+    }
+
     .container {
       display: grid;
       grid-template-columns: 100px 1fr 100px;
-      grid-template-rows: 100px 50px auto 20px 70px;
+      grid-template-rows: 200px 50px auto 20px 70px;
       grid-template-areas: 
         "header   header    header"
         "gnb      gnb       gnb   "
@@ -20,28 +26,61 @@
     }
     header{
       grid-area: header;
+      background-image: url('https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
     }
     nav{
       grid-area: gnb;
+    }
+    nav ul{
+      display: flex;
+      justify-content: flex-end;
+      list-style: none;
+      padding:0px;
+      background-color: #333;
+    }
+    nav ul li a{
+      padding: 0px 10px;
+      background-color: #333;
+      color : #eee;
+    }
+    nav ul li a:hover{
+      background-color: #aaa;
     }
     aside.left {
       grid-area:side-a;
     }  
     main {
       grid-area: main;
+      background-color: pink;
     }
+    /* main:hover{
+      z-index: 100;
+      transform: scale(1.2);
+      transition: transform ease .5s 0s;
+    } */
     aside.right {
       grid-area:side-b;
     }  
     footer {
       grid-area: footer;
     }
+
+    
   </style>
 </head>
 <body>
   <div class="container">
     <header>header</header>
-    <nav>gnb_menu</nav>
+    <nav>
+      <ul>
+        <li><a href="http://www.naver.com">네이버</a></li>
+        <li><a href="http://www.google.com">구글</a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </nav>
     <aside class="left">aside</aside>
     <main>main
       <section class="s1">
