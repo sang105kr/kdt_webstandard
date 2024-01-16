@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex layout 연습</title>
+  <style>
+    * { outline: 1px solid red;}
+
+    :root {
+      --bg-color-1: #452c54;
+      --bg-color-2: #5F3C73;
+      --bg-color-3: #754A8E;
+      --bg-color-4: #8B58A9;
+      --bg-color-5: #9D73B7;
+      --bg-color-6: #AF8CC4;
+    }
+
+    a {
+      text-decoration: none; /* 밑줄 제거 */
+      color: #222;
+    }
+
+    body {
+      margin: 0px;
+    }
+
+    .wrap{
+      display: grid;
+      grid-template-columns: 1fr 600px 1fr;
+      grid-template-rows: 50px 100px 50px minmax(100px,auto) 50px 70px;
+      grid-template-areas: 
+        "umm-l    umm   umm-r"
+        "hdr-l    hdr   hdr-r"
+        "gnb-l    gnb   gnb-r"
+        "main-l   main  main-r"
+        "ftm-l    ftm   ftm-r"
+        "ft-l     ft    ft-r";
+    }
+    .wrap .item{
+      display: grid;
+      place-items: center center;
+    }
+
+    .wrap .item.umm-l,
+    .wrap .item.umm-r {
+      background-color: var(--bg-color-1);
+    }
+    .wrap .item.umm {
+      background-color: var(--bg-color-2);
+    }
+
+    /* gnb */
+    .wrap .item.gnb .menu {
+      margin:0; padding:0;
+      list-style: none;   /* 불릿 제거 */
+      display: flex;
+      justify-content: center;
+      height:50px;
+      background-color: #555;
+    }
+    .wrap .item.gnb .menu .menu_item {
+      height: 100%;
+      /* flex-grow: 1;
+      flex-shrink: 1; */
+    }
+    .wrap .item.gnb .menu .menu_item:hover {
+      background-color: #222;
+    }
+    .wrap .item.gnb .menu .menu_item a{
+      padding:0px 20px;
+      color: #fff;
+      line-height: 50px;
+      position:relative;
+    }
+    .wrap .item.gnb .menu .menu_item a:hover::before{
+      content:" ";
+      display: block;
+      width:10px;
+      height:10px;
+      border-radius: 50%;
+      position:absolute;
+      top:7px;
+      left:3px;
+      background-color: #ddd;
+
+    }
+    .wrap .item.gnb .menu .menu_item:hover a{
+      color: #aaa;
+    }
+
+    /* main */
+    .wrap .item.main{
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="item umm-l">item1</div>
+    <div class="item umm">item2</div>
+    <div class="item umm-r">item3</div>
+    <div class="item hdr-l">item4</div>
+    <div class="item hdr">item5</div>
+    <div class="item hdr-r">item6</div>
+    <div class="item gnb-l">item7</div>
+    <div class="item gnb">
+      <ul class="menu">
+        <li class="menu_item menu_item1"><a href="http://www.naver.com">네이버</a></li>
+        <li class="menu_item menu_item2"><a href="layout1.html">FLEX</a></li>
+        <li class="menu_item menu_item3"><a href="layout2.html">GRID</a></li>
+        <li class="menu_item menu_item4"><a href="#">menu4</a></li>
+        <li class="menu_item menu_item5"><a href="#">menu5</a></li>
+      </ul>
+    </div>
+    <div class="item gnb-r">item9</div>
+    <div class="item main-l">item10</div>
+    <div class="item main">
+      <div class="content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis minus debitis inventore nostrum, perspiciatis alias exercitationem beatae expedita totam unde perferendis, doloremque commodi, necessitatibus pariatur laborum eligendi rem tenetur facere!
+        Doloribus veniam eos ullam, dicta unde amet, voluptas totam nihil dolorum nesciunt explicabo tenetur quos quas quae modi neque. Minima magni voluptatibus et facilis nihil, qui ducimus perspiciatis adipisci dicta.
+        Quisquam rerum qui voluptatem accusamus nihil, dolor facere quam in praesentium reiciendis odit nesciunt laudantium cum officia earum porro sequi deleniti, adipisci nemo recusandae corporis, possimus sint! Fugiat, ut adipisci!
+      </div>
+      <div class="sb">sidebanner</div>
+      <div class="sm">sidemenu</div>
+    </div>
+    <div class="item main-r">item12</div>
+    <div class="item ftm-l">item13</div>
+    <div class="item ftm">item14</div>
+    <div class="item ftm-r">item15</div>
+    <div class="item ft-l">item16</div>
+    <div class="item ft">item17</div>
+    <div class="item ft-r">item18</div>
+  </div>
+</body>
+</html>
