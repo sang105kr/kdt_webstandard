@@ -32,25 +32,48 @@
       height:3000px;
       background-color: lightcoral;
     }
-    .sticky-header{
+    .main{
+      display:flex;
+      justify-content: space-between;    
+      min-height: 100vh; 
+    }    
+    .left{
+      flex-basis: calc(100vw - 200px);
+    }
+    .right{
       position:sticky;
       top:100px;
-      margin-left:calc(100vw - 100px);
+      right:50px;
       width:100px;
       height:300px;
       background-color: orangered;
       z-index: 999;
     }
+
   </style>
 </head>
 <body>
   <h3>스크롤 다운</h3>
   <div class="gnb">메뉴</div>
   <div class="content1"></div>
-  <div class="sticky-header">
-    광고문구
+  <div class="main">
+    <div class="left">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis ipsum omnis cum vero magnam voluptas porro earum sapiente officia hic odio aut, reiciendis placeat libero sit molestias cumque tenetur delectus?
+    Accusamus, voluptas temporibus obcaecati dolores voluptatibus quas quo eveniet eaque expedita repellendus. Explicabo dolores dicta molestiae reprehenderit voluptatibus impedit vero tenetur nemo aliquam ducimus est, officia porro, tempora sit iusto.
+    Sit quo harum eos fuga molestias autem sint perspiciatis laudantium sapiente quidem tempora, neque consequatur in aperiam hic inventore magni? Possimus molestias perferendis dicta totam aut, veritatis rerum nemo eveniet!
+    Tenetur non perspiciatis deleniti sunt aliquam totam minus, asperiores, assumenda molestias fugit laboriosam voluptatum vitae similique quisquam praesentium quia animi maxime! Voluptate rem totam nostrum repellat eos, cumque sit officiis.
+    Nisi, voluptatibus? Pariatur cupiditate vel consequuntur saepe dolorum maiores vero. Molestias quos suscipit corporis debitis mollitia fuga, illo deserunt, voluptatem doloremque commodi quasi adipisci vero, cum beatae! Ducimus, unde quidem.
+    Cum labore molestias veritatis dolorem quia. Aspernatur modi doloribus dignissimos perferendis numquam. Eos corrupti voluptas explicabo deserunt sunt ipsam, fuga, ab amet laborum quisquam eligendi molestiae perferendis tempore consequuntur dolorum.
+    Blanditiis perspiciatis odit recusandae molestiae velit totam earum, eligendi hic atque laboriosam consectetur explicabo facilis ab excepturi reprehenderit voluptatem eum at magnam vero! Fugit error dolorem impedit quidem, eligendi voluptatum?
+    Minima, exercitationem. Necessitatibus temporibus placeat harum soluta optio assumenda aspernatur labore perferendis quia! Incidunt nisi id consequatur dignissimos libero sit, magnam tempora deleniti, perferendis asperiores repudiandae ipsum a similique officia.
+    Dicta perspiciatis voluptatibus vitae expedita quasi eaque praesentium odit. Nostrum ipsam at minus esse. Consectetur maiores libero impedit aperiam, id velit. Corporis recusandae voluptas illum tempore et cupiditate quibusdam non.
+    Illo quis dignissimos ipsa temporibus quae adipisci cupiditate tenetur, voluptas quidem fuga! Esse, magnam tempora ratione necessitatibus quibusdam, nam in iusto sunt accusamus minus itaque id omnis nisi veniam molestias?
+    </div>
+    <div class="content2"></div>
+    <div class="content3"></div>    
+    <div class="right">
+      광고문구
+    </div>
   </div>
-  <div class="content2"></div>
-  <div class="content3"></div>
+
 </body>
 </html>
