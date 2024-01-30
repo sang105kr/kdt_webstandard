@@ -1,0 +1,190 @@
+.Grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 600px 1fr;
+  grid-template-rows: 30px 150px 50px auto 70px;
+  grid-template-areas:
+    "aside_hl   header      aside_hr"
+    "aside_bl   banner      aside_br"
+    "aside_nl   nav         aside_nr"
+    "aside_ml   main        aside_mr"
+    "aside_fl   footer      aside_fr"
+  ;
+}
+
+.aside_hl {
+  grid-area: aside_hl;
+  width: 100%;
+  background-color: black;
+}
+
+.aside_hr {
+  width: 100%;
+  grid-area: aside_hr;
+  background-color: black;
+}
+
+.header {
+  grid-area: header;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: black;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: bold;
+}
+
+.header .margin {
+  padding: 10px;
+}
+
+.header div a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: bold;
+}
+
+.aside_bl {
+  grid-area: aside_bl;
+  background-color: black;
+
+}
+
+.banner {
+  grid-area: banner;
+  background-image: url(https://cdn.pixabay.com/photo/2016/06/25/12/52/laptop-1478822_640.jpg);
+  box-sizing: border-box;
+  background-size: cover;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-position: center, center;
+}
+
+.aside_br {
+  grid-area: aside_br;
+}
+
+.aside_nl {
+  grid-area: aside_nl;
+}
+
+.nav {
+  grid-area: nav;
+  background-color: black;
+}
+
+.nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.nav ul a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: bold;
+}
+
+.nav ul a:hover {
+  text-decoration: underline;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: bold;
+}
+
+.aside_nr {
+  grid-area: aside_nb;
+}
+
+.aside_ml {
+  grid-area: aside_ma;
+}
+
+.main {
+  grid-area: main;
+  display: flex;
+
+}
+
+.main .dummy {
+  width: 20%;
+  background-color: lightskyblue;
+}
+
+.main section {
+  padding-bottom: 0.3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  background-color: lightcyan;
+}
+
+.main section h3 {
+  text-align: center;
+  letter-spacing: 0.5em;
+  margin: 10px;
+}
+
+.main_body {
+  margin: 15px;
+}
+
+.main section .loginbody {
+  padding: 15px;
+  width: 250px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+
+.main section .loginbody .label {
+  margin-bottom: 0.3px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: smaller;
+  font-weight: bold;
+}
+
+.aside_mr {
+  grid-area: aside_mr;
+}
+
+.aside_fl {
+  grid-area: aside_fl;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer div {
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.aside_fr {
+  grid-area: aside_fr;
+}
+
+.btn {
+  padding: 5px;
+  font-weight: bold;
+  letter-spacing: 0.5em;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: green;
+  color: white;
+}
