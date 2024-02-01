@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .msg {
+      display: none; /*boxmodel 제거*/
+      /* visibility: hidden; boxmodel유지, content는 숨김 */
+      margin:0;
+      font-size : 0.8rem;
+      font-weight: bold;
+      color : red;
+
+    }
+    .on {
+      display: block;
+    }
+    .off {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h3>로그인</h3>
+  <form action="">
+    <div><label for="">아이디</label><input id="id" type="text"></div>
+    <p class="msg"></p>
+    <div><label for="">비밀번호</label><input id="pw" type="password"></div>
+    <div><input id='btnLogin' type="button" value="로그인"></div>
+    <!-- <div><button type="button">로그인2</button></div> -->
+  </form>
+  <script>
+    const $btnLogin = document.getElementById('btnLogin');
+    $btnLogin.addEventListener('click',()=>{
+      const $id = document.getElementById('id');
+      if($id.value.trim().length == 0){
+        const $msg = document.querySelector('.msg');
+        $msg.textContent = '아이디를 입력하세요';
+        // $msg.style.display = 'block';
+        $msg.classList.add('on');
+      }
+    });
+  </script>
+</body>
+</html>
