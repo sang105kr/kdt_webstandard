@@ -1,0 +1,42 @@
+<!-- 
+문제 1)
+HTML 문서에는 여러 개의 버튼이 있습니다. 
+각 버튼을 클릭하면 해당 버튼의 텍스트 색상이 빨간색으로 변경되도록 자바스크립트를 작성해보세요. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="btns-wrap">
+    <button>버튼1</button>
+    <button>버튼2</button>
+    <button>버튼3</button>
+    <button>버튼3</button>
+    <button>버튼3</button>
+  </div>
+  <div><button id="clearBtn">초기화</button></div>
+  <script>
+    const $btns = document.querySelector('.btns-wrap');
+    $btns.addEventListener('click',evt=>{
+      // console.log(evt);
+      if(evt.target.nodeName == 'BUTTON'){
+        evt.target.style.color = 'red';
+      }
+    })
+    document.getElementById('clearBtn')
+            .addEventListener('click',evt=>{
+      console.log($btns.children)
+
+      // for(let ele of $btns.children){
+      //   ele.style.color = 'initial';
+      // }
+      Array.from($btns.children).forEach(ele=>ele.style='red');
+    });
+  </script>
+</body>
+</html>

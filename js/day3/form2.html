@@ -33,7 +33,12 @@
   </form>
   <script>
     const $btnLogin = document.getElementById('btnLogin');
-    $btnLogin.addEventListener('click',()=>{
+    $btnLogin.addEventListener('click',(evt)=>{
+      console.log(evt);
+      console.log(evt.target);  //이벤트 소스
+      console.log(evt.currentTarget);  //이벤트 리스너가 등록된 요소
+      console.log(evt.screenX,evt.screenY);  //스크린좌표
+      console.log(evt.type);    //이벤트 종류
       const $id = document.getElementById('id');
       if($id.value.trim().length == 0){
         const $msg = document.querySelector('.msg');
@@ -42,6 +47,37 @@
         $msg.classList.add('on');
       }
     });
+
+    const $pw = document.getElementById('pw');
+    $pw.addEventListener('keyup',(evt)=>{
+      // console.log(evt);
+      if(evt.key=='Enter'){
+        console.log('Enter 키가 눌려 졌습니다');
+      }else if(evt.key=='a'){
+        console.log('a 키가 눌려 졌습니다');
+      }
+
+      //비밀번호 3자리 초과하는지 체크
+      if($pw.value.length > 3) {
+        console.log('비밀번호길이가 3자리를 초과합니다!');
+        $pw.value = '';
+      }
+    })
+    // $btnLogin.addEventListener('mouseover',(evt)=>{
+    //    console.log(evt);
+    //    evt.target.style.backgroundColor='yellow';
+    // });
+    // $btnLogin.addEventListener('mouseleave',(evt)=>{
+    //    console.log(evt);
+    //    evt.target.style.backgroundColor='initial';
+    // });
+
+    document.querySelector('html').addEventListener('click',(evt)=>{
+      console.log('html에서 버블링 단계에 발생된 이벤트 객체 :' + evt);
+    },false)
+    document.querySelector('html').addEventListener('click',(evt)=>{
+      console.log('html에서 캡처링 단계에 발생된 이벤트 객체 :' + evt);
+    },true)    
   </script>
 </body>
 </html>
