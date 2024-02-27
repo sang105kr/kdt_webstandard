@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <textarea name="" id="content" cols="30" rows="3"></textarea>
+  <button id="addBtn">등록</button>
+  <ul class="list">
+    <li class="item item1">내용1 <button class="modifyBtn">수정</button><button class="delBtn">삭제</button></li>
+    <li class="item item2">내용2 <button class="modifyBtn">수정</button><button class="delBtn">삭제</button></li>
+    <!-- <li class="item item2"><input t class="text" value="내용2"> <button>저장</button><button>취소</button></li> -->
+    <li class="item item3">내용3 <button class="modifyBtn">수정</button><button class="delBtn">삭제</button></li>
+  </ul>
+  <script>
+
+    function maxItemNumber(){
+      const $items = document.querySelectorAll('.list .item');
+      const max =  Array.from($items).map(item=>item.classList[1].substring(4))
+                        .sort((first,second)=>second-first)[0];
+      const num = parseInt(max) + 1;
+      return num;
+    }
+
+    const $list = document.querySelector('.list');
+    //등록
+    addBtn.addEventListener('click',evt=>{
+      const $li = document.createElement('li');
+      $li.setAttribute('class',`item item${maxItemNumber()}`);
+      $li.innerHTML = `${content.value} <button class="modifyBtn">수정</button><button class="delBtn">삭제</button>`;
+      $list.insertAdjacentElement('beforeend',$li);
+      content.value = '';
+      content.focus();
+      addBtnEvent();
+    });
+
+    function addBtnEvent(){   
+      const $delBtns = document.querySelectorAll('.delBtn');
+      const $modifyBtns = document.querySelectorAll('.modifyBtn');
+
+      //삭제
+      Array.from($delBtns).forEach(btn=>{
+        btn.addEventListener('click',evt=>{
+          evt.target.closest('li').remove();  
+        }); 
+      });
+
+      //수정
+      Array.from($modifyBtns).forEach(btn=>{
+        btn.addEventListener('click',evt=>{
+
+          const $currLi = evt.target.closest('li');
+          const oldText = $currLi.firstChild.nodeValue;
+          $currLi.innerHTML = `${oldText}<input t class="text" value="내용2"> <button>저장</button><button>취소</button>`;  
+
+        }); 
+      })
+
+    }
+
+    addBtnEvent();
+  </script>
+</body>
+</html>
