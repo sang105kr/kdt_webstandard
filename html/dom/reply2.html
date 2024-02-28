@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    #delModal::backdrop {
+      background-color: rgba(0,0,255,0.1);
+    }
+    #delModal {
+      border:none;
+      outline:none;
+      border-radius : 5%;
+      background-color: rgba(0,0,255,0.5);
+      box-shadow: 5px 5px 2px 1px rgba(0, 0, 255, .2);
+    }
+  </style>  
 </head>
 <body>
   <textarea name="" id="comment" cols="30" rows="3"></textarea>
@@ -24,7 +36,16 @@
   <template id="err">
     <p class="errmsg"></p>
   </template>
+  <dialog id="delModal">
+    <p>삭제하시겠습니까?</p>
+    <form action="" method="dialog">
+      <button id="cancelBtn">취소</button>
+      <button id="delItemBtn">삭제</button>
+    </form>
+  </dialog>  
   <script>
+
+    let replyNumber = 0;
     //등록
     document.querySelector('.addBtn').addEventListener('click',evt=>{
       //1)유효성체크
@@ -37,6 +58,9 @@
       }
       //
       const $readeModeLi = readMode.content.cloneNode(true).querySelector('li');
+      //댓글번호
+      $readeModeLi.dataset.replyNumber = ++replyNumber;
+
       $readeModeLi.querySelector('.reply').textContent = comment.value;
       document.querySelector('.list').appendChild($readeModeLi);
       comment.value = '';
@@ -64,6 +88,8 @@
       //2)
       const $readModeLi = e.target.closest('li');
       const $modifyModeLi = modifyMode.content.cloneNode(true).querySelector('li');
+      $modifyModeLi.dataset.replyNumber =  $readModeLi.dataset.replyNumber;
+
       $modifyModeLi.querySelector('input').value = $readModeLi.querySelector('.reply').textContent;
       //댓글 초기값을 사용자정의 속성을 생성해 저장해둔다.
       $modifyModeLi.querySelector('input').dataset.oldText = $readModeLi.querySelector('.reply').textContent;
@@ -71,12 +97,16 @@
     }
     function del(e){
       console.log('삭제');
-      e.target.closest('li').remove();
+      $delModal.showModal();
+      $delModal.dataset.replyNumber = e.target.closest('li').dataset.replyNumber;
+      // e.target.closest('li').remove();
     }
     function save(e){
       console.log('저장');
       const $readModeLi = readMode.content.cloneNode(true).querySelector('li');
       const $modifyModeLi = e.target.closest('li');
+      $readModeLi.dataset.replyNumber = $modifyModeLi.dataset.replyNumber;
+
       $readModeLi.querySelector('.reply').textContent =  $modifyModeLi.querySelector('input').value;
       $modifyModeLi.replaceWith($readModeLi);
     }
@@ -84,11 +114,37 @@
       console.log('취소');
       const $readModeLi = readMode.content.cloneNode(true).querySelector('li');
       const $modifyModeLi = e.target.closest('li');
+      $readModeLi.dataset.replyNumber = $modifyModeLi.dataset.replyNumber;
+
       //댓글 초기값을 사용자정의 속성을 읽어온다.
       $readModeLi.querySelector('.reply').textContent =  $modifyModeLi.querySelector('input').dataset.oldText;
       $modifyModeLi.replaceWith($readModeLi);      
     }
 
+    /* 모달창 ---------------------------------------------*/
+    const $delModal = document.getElementById('delModal');    //삭제 모달창
+    const $cancelBtn = document.getElementById('cancelBtn');   //취소버튼 모달창   
+    const $delItemBtn = document.getElementById('delItemBtn'); //삭제버튼 모달창
+
+    $delModal.addEventListener('close',evt=>{
+      if($delModal.returnValue == 'ok'){
+        const replyNumber = evt.currentTarget.dataset.replyNumber;
+        const $lis = document.querySelectorAll('.list .item');
+        const findedIdx = Array.from($lis).findIndex(li=>li.dataset.replyNumber == replyNumber);
+        $lis[findedIdx].remove();
+      }
+    });
+
+    //취소버튼 모달창
+    $cancelBtn.addEventListener('click', evt=>{
+      $delModal.close('cancel'); 
+    });
+
+    //삭제버튼 모달창
+    $delItemBtn.addEventListener('click', evt=>{
+      $delModal.close('ok');     
+    });  
+    /*-----------------------------------------------------*/    
   </script>
 </body>
 </html>
