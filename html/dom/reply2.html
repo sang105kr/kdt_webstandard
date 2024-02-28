@@ -8,24 +8,39 @@
 <body>
   <textarea name="" id="comment" cols="30" rows="3"></textarea>
   <button class="addBtn">등록</button>
+  <div id="commentErrMsg"></div>
   <ul class="list"></ul>
 
   <template id="readMode">
-    <li class="item"><span class="reply"></span> 
+    <li class="item read"><span class="reply"></span> 
       <button class="modifyBtn">수정</button><button class="delBtn">삭제</button>
     </li>
   </template>
   <template id="modifyMode">
-    <li class="item">
+    <li class="item modi">
       <input type="text"><button class="saveBtn">저장</button><button class="cancelBtn">취소</button>
     </li>
   </template>  
+  <template id="err">
+    <p class="errmsg"></p>
+  </template>
   <script>
     //등록
     document.querySelector('.addBtn').addEventListener('click',evt=>{
+      //1)유효성체크
+      if(comment.value.trim().length < 3) {
+        //alert('3글자 이상 입력바랍니다.');
+       commentErrMsg.textContent = '3글자 이상 입력바랍니다.';
+        return;
+      }else{
+        commentErrMsg.textContent = '';
+      }
+      //
       const $readeModeLi = readMode.content.cloneNode(true).querySelector('li');
       $readeModeLi.querySelector('.reply').textContent = comment.value;
       document.querySelector('.list').appendChild($readeModeLi);
+      comment.value = '';
+      comment.focus();
     });
 
     document.querySelector('.list').addEventListener('click',evt=>{
@@ -44,6 +59,9 @@
 
     function modify(e){
       console.log('수정');
+      //1) 수정모드 li를 찾아서 취소버튼 클릭
+      document.querySelector('.list li.modi')?.querySelector('.cancelBtn').click();
+      //2)
       const $readModeLi = e.target.closest('li');
       const $modifyModeLi = modifyMode.content.cloneNode(true).querySelector('li');
       $modifyModeLi.querySelector('input').value = $readModeLi.querySelector('.reply').textContent;
