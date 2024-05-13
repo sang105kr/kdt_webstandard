@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 네이버 지도 API 가져오기-->
+  <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=uhq6cts1yx"></script>
+  <style>
+    body,h3 {margin:0}
+    #title {
+      background-color: black;
+      color:white;
+      font-weight: bold;
+      margin:0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="title"><h3>지도</h3></div>
+  <div id="map" style="width:100vw;height:100vh"></div>  
+
+  <script>
+    function getLocation(){
+      return new Promise((resolve, reject)=>{
+        if(!navigator.geolocation){
+          reject(new Error('Geolocation 이 브라우저에서 지원되지 않음!'))
+        }else{
+          navigator.geolocation.getCurrentPosition(resolve,reject)
+        }
+      });
+    }
+
+    async function fetchLocation(){
+      try{
+        const position = await getLocation();
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        console.log(`위도:${lat}, 경도:${lng}`);
+        
+        // 지도
+        makeMap(lat,lng);
+      }catch(err){
+        console.error(`오류: ${error.message}`)
+      }  
+
+    }
+    window.addEventListener('load',fetchLocation);
+
+    // 초기 지도생성
+    function makeMap(lat,lng){
+      const map = new naver.maps.Map('map', {
+          center: new naver.maps.LatLng(lat, lng),
+          zoom: 16
+      });
+
+      const marker = new naver.maps.Marker({
+          position: new naver.maps.LatLng(lat, lng),
+          map: map
+      });
+    } 
+  </script>
+</body>
+</html>
